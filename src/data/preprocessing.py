@@ -5,7 +5,7 @@ import fire
 import pandas as pd
 import numpy as np
 from sklearn.base import TransformerMixin, BaseEstimator
-from sklearn.preprocessing import StandardScaler
+from sklearn.preprocessing import StandardScaler, LabelEncoder
 from sklearn.pipeline import Pipeline
 from src.logger import get_console_logger
 
@@ -62,6 +62,12 @@ def get_preprocessing_pipeline(feature_crosses: List[Tuple[str]] = None) -> Pipe
     ]
 
     return Pipeline(steps=pipeline_steps)
+
+def encode_target(y: pd.Series) -> pd.Series:
+    """
+    Target Encoding to a Numerical
+    """
+    return LabelEncoder().fit_transform(y)
 
 if __name__ == "__main__":
 
