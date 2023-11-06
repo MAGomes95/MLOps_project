@@ -27,11 +27,11 @@ def get_model_fn_from_name(model_name: str = Literal["svm", "random_forest", "kn
     Returns the model object given model name.
     """
     if model_name == "svm":
-        return SVC()
+        return SVC
     elif model_name == "knn":
-        return KNeighborsClassifier()
+        return KNeighborsClassifier
     else:
-        return RandomForestClassifier()
+        return RandomForestClassifier
     
 
 def train(
@@ -65,12 +65,8 @@ def train(
     if not tune_hyperparams:
         logger.info("Using default hyperparameters")
         pipeline = make_pipeline(
-            get_preprocessing_pipeline(feature_crosses=[
-                ("Coughing of Blood", "Genetic Risk"), 
-                ("Dust Allergy", "Weight Loss"), 
-                ("Alcohol use", "Chest Pain")
-            ]),
-            model_fn
+            get_preprocessing_pipeline(),
+            model_fn()
         )
     else:
         logger.info("Finding best hyperparameters")
@@ -85,11 +81,7 @@ def train(
         logger.info(f"Best Hyperparameters: {best_hyperparams}")
 
         pipeline = make_pipeline(
-            get_preprocessing_pipeline(feature_crosses=[
-                ("Coughing of Blood", "Genetic Risk"), 
-                ("Dust Allergy", "Weight Loss"), 
-                ("Alcohol use", "Chest Pain")
-            ]),
+            get_preprocessing_pipeline(),
             model_fn.set_params(**best_hyperparams)
         )
 
