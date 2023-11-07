@@ -11,8 +11,8 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.svm import SVC
 
-from src.logger import get_console_logger
-from src.data.preprocessing import get_preprocessing_pipeline
+from logger import get_console_logger
+from data.preprocessing import get_preprocessing_pipeline
 
 logger = get_console_logger()
 

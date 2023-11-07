@@ -14,7 +14,7 @@ from sklearn.feature_selection import (
     mutual_info_classif
 )
 from sklearn.pipeline import Pipeline
-from src.logger import get_console_logger
+from logger import get_console_logger
 
 logger = get_console_logger()
 

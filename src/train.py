@@ -13,12 +13,12 @@ from sklearn.metrics import accuracy_score
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.svm import SVC
 from sklearn.neighbors import KNeighborsClassifier
-from src.logger import get_console_logger
-from src.data.preprocessing import (
+from logger import get_console_logger
+from data.preprocessing import (
     get_features_and_target,
     get_preprocessing_pipeline
 )
-from src.models.hyperparams import find_best_hyperparams
+from models.hyperparams import find_best_hyperparams
 
 logger = get_console_logger()
 
