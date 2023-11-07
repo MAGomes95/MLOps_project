@@ -7,7 +7,8 @@ import numpy as np
 from sklearn.preprocessing import (
     LabelEncoder,
     MinMaxScaler,
-    PolynomialFeatures
+    PolynomialFeatures,
+    FunctionTransformer
 )
 from sklearn.feature_selection import (
     SelectKBest, 
@@ -18,20 +19,30 @@ from logger import get_console_logger
 
 logger = get_console_logger()
 
-def get_features_and_target(path_to_input: Optional[Path]) -> Tuple[pd.DataFrame, pd.Series]:
+def get_features_and_target(
+        path_to_input: Optional[Path],
+        target: str = "Level"
+    ) -> Tuple[pd.DataFrame, pd.Series]:
     """
     Loads the data from provided path and returns separatly features and target
     """
     dataset = pd.read_csv(path_to_input)
-    features = dataset[np.setdiff1d(dataset.columns, "target")]
-    target = dataset["target"]
+    features = dataset[np.setdiff1d(dataset.columns, [target])]
+    target = dataset[target]
 
     return features, target
+
+def feature_dropper(X: pd.DataFrame, features: List[str]) -> pd.DataFrame:
+    """
+    Drops feature from the received dataset X
+    """
+    return X[np.setdiff1d(X.columns, features)]
 
     
 def get_preprocessing_pipeline() -> Pipeline:
     """Returns the preprocessing pipeline."""
     pipeline_steps = [
+        ("drop ID", FunctionTransformer(feature_dropper, kw_args={"features": ["Patient Id"]})),
         ("interaction features", PolynomialFeatures(interaction_only=True, include_bias=False)),
         ("feature selection", SelectKBest(mutual_info_classif, k=5)),
         ("scaling", MinMaxScaler()),
