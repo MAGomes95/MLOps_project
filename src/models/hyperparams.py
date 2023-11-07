@@ -75,21 +75,19 @@ def find_best_hyperparams(
             X_train, X_val = X.iloc[train_idx], X.iloc[validation_idx]
             y_train, y_val = y.iloc[train_idx], y.iloc[validation_idx]
 
+            logger.info(f"train_X: {X_train.columns, X.iloc[0]}||| train_y: {y_train.iloc[0]}")
+
             logger.info(f'{split_number=}')
             logger.info(f'{len(X_train)=}')
             logger.info(f'{len(X_val)=}')
 
             pipeline = make_pipeline(
-                get_preprocessing_pipeline(
-                    feature_crosses=[
-                        ("Coughing of Blood", "Genetic Risk"), 
-                        ("Dust Allergy", "Weight Loss"), 
-                        ("Alcohol use", "Chest Pain")
-                    ]),
+                get_preprocessing_pipeline(),
                 model_fn(**hyperparameters)
             )
             pipeline.fit(X_train, y_train)
 
+            logger.info("Enter Evaluation")
             # Model Evaluation
             y_pred = pipeline.predict(X_val)
             accuracy = accuracy_score(y_val, y_pred)

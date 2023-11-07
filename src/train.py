@@ -1,6 +1,7 @@
 import os
 import pickle
-from typing import Dict, Union, Optional, Callable, Literal
+from dotenv import load_dotenv
+from typing import Optional, Callable, Literal
 
 
 import pandas as pd
@@ -112,7 +113,7 @@ if __name__ == "__main__":
     parser = ArgumentParser()
     parser.add_argument("--model", type=str, choices=["svm", "rf", "knn"])
     parser.add_argument("--tune-hypers", action="store_true")
-    parser.add_argument("--hyperparms-trials", type=int, default=10)
+    parser.add_argument("--hyperparams-trials", type=int, default=10)
     args = parser.parse_args()
 
     logger.info("Getting features and target")
@@ -120,11 +121,14 @@ if __name__ == "__main__":
         path_to_input="data/raw_data.csv"
     )
 
+    logger.info("Loading environment variables")
+    load_dotenv()
+
     logger.info("Performing Training")
     train(
         X=features,
         y=target,
         model=args.model,
         tune_hyperparams=args.tune_hypers,
-        hyperparams_trials=args.hyperparms_trials
+        hyperparams_trials=args.hyperparams_trials
     )
