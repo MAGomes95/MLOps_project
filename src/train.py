@@ -58,7 +58,7 @@ def train(
     # Split the data intro train and validation
     train_sample_size = int(0.8 * X.shape[0])
     X_train, X_validation = X.iloc[:train_sample_size], X.iloc[train_sample_size:]
-    y_train, y_validation = y.iloc[:train_sample_size], y.iloc[train_sample_size:]
+    y_train, y_validation = y[:train_sample_size], y[train_sample_size:]
 
     logger.info(f"Train size: {X_train.shape[0]}")
     logger.info(f"Validation size: {X_validation.shape[0]}")
@@ -83,7 +83,7 @@ def train(
 
         pipeline = make_pipeline(
             get_preprocessing_pipeline(),
-            model_fn.set_params(**best_hyperparams)
+            model_fn().set_params(**best_hyperparams)
         )
 
         experiment.add_tag("Hyperparameters-tunning")
