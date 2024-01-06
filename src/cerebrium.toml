@@ -1,0 +1,35 @@
+[cerebrium.build]
+predict_data = '{"Age": 23.0, "Gender": 0, "Air Pollution": 5.0, "Alcohol use": 3.0, "Dust Allergy": 7.0, "Occupational Hazards": 2.0, "Genetic Risk": 6.0, "chronic Lung Disease": 1.0, "Balanced Diet": 7.0, "Obesity": 1.0, "Smoking": 1.0, "Passive Smoker": 3.0, "Chest Pain": 1.0, "Coughing of Blood": 3.0, "Wheezing": 4.0, "Swallowing Difficulty": 1.0, "Clubbing of Finger Nails": 1.0, "Frequent Cold": 2.0, "Dry Cough": 1.0, "Coughing of Blood": 6.0, "Fatigue": 5.0, "Weight Loss": 1.0, "Shortness of Breath": 1.0, "Snoring": 6.0}'
+force_rebuild = false
+disable_animation = false
+log_level = "INFO"
+disable_confirmation = false
+
+[cerebrium.deployment]
+name = "my-cortex-deployment"
+python_version = "3.10"
+include = "[./*, main.py]"
+exclude = "[./.*, ./__*, ./data, ./train.py, ./test_endpoint.py]"
+
+[cerebrium.hardware]
+gpu = "AMPERE_A5000"
+cpu = 2
+memory = 16.0
+gpu_count = 1
+
+[cerebrium.scaling]
+min_replicas = 0
+cooldown = 60
+
+[cerebrium.dependencies.pip]
+pandas = ">=2.1.1"
+scikit-learn = ">=1.3.2"
+pydantic = ">=2.4.2"
+comet-ml = ">=3.35.1"
+python-dotenv = ">=1.0.0"
+
+[cerebrium.dependencies.conda]
+
+[cerebrium.dependencies.apt]
+git = "latest"
+ffmpeg = "latest"

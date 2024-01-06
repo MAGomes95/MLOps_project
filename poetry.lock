@@ -250,13 +250,13 @@ css = ["tinycss2 (>=1.1.0,<1.3)"]
 
 [[package]]
 name = "cerebrium"
-version = "1.9.4"
+version = "1.13.12"
 description = ""
 optional = false
 python-versions = ">=3.8,<3.12"
 files = [
-    {file = "cerebrium-1.9.4-py3-none-any.whl", hash = "sha256:061e5eef03a380167aef0ceef1e873cd905ddf39bec1164ba285d8734c2224fe"},
-    {file = "cerebrium-1.9.4.tar.gz", hash = "sha256:b811346fbd7c57cbad5f1c256a3399d5afe444bdf7a80449f0d7a7303d8e9cd5"},
+    {file = "cerebrium-1.13.12-py3-none-any.whl", hash = "sha256:483afad796d7564cfb96aa413adcaa26c0f8f85104e278f18d3eb47b2bb3dc45"},
+    {file = "cerebrium-1.13.12.tar.gz", hash = "sha256:a8a4b5b926b8795e0d40d6fa307d9bb9e6477f844548cca9c7d1d5a6f38a647d"},
 ]
 
 [package.dependencies]
@@ -267,7 +267,9 @@ prodict = ">=0.8.18,<0.9.0"
 pyflakes = ">=3.1.0,<4.0.0"
 pyyaml = ">=6.0,<7.0"
 requests = ">=2.30,<3.0"
+rich = ">=13.7.0,<14.0.0"
 tenacity = ">=8.2,<8.3"
+toml = ">=0.10.2,<0.11.0"
 tqdm = ">=4.64,<4.65"
 typer = {version = ">=0.7.0", extras = ["all"]}
 typing_extensions = ">=3.6.6"
@@ -2774,13 +2776,13 @@ files = [
 
 [[package]]
 name = "rich"
-version = "13.6.0"
+version = "13.7.0"
 description = "Render rich text, tables, progress bars, syntax highlighting, markdown and more to the terminal"
 optional = false
 python-versions = ">=3.7.0"
 files = [
-    {file = "rich-13.6.0-py3-none-any.whl", hash = "sha256:2b38e2fe9ca72c9a00170a1a2d20c63c790d0e10ef1fe35eba76e1e7b1d7d245"},
-    {file = "rich-13.6.0.tar.gz", hash = "sha256:5c14d22737e6d5084ef4771b62d5d4363165b403455a30a1c8ca39dc7b644bef"},
+    {file = "rich-13.7.0-py3-none-any.whl", hash = "sha256:6da14c108c4866ee9520bbffa71f6fe3962e193b7da68720583850cd4548e235"},
+    {file = "rich-13.7.0.tar.gz", hash = "sha256:5cb5123b5cf9ee70584244246816e9114227e0b98ad9176eede6ad54bf5403fa"},
 ]
 
 [package.dependencies]
@@ -3456,6 +3458,17 @@ doc = ["sphinx", "sphinx_rtd_theme"]
 test = ["flake8", "isort", "pytest"]
 
 [[package]]
+name = "toml"
+version = "0.10.2"
+description = "Python Library for Tom's Obvious, Minimal Language"
+optional = false
+python-versions = ">=2.6, !=3.0.*, !=3.1.*, !=3.2.*"
+files = [
+    {file = "toml-0.10.2-py2.py3-none-any.whl", hash = "sha256:806143ae5bfb6a3c6e736a764057db0e6a0e05e338b5630894a5f779cabb4f9b"},
+    {file = "toml-0.10.2.tar.gz", hash = "sha256:b3bda1d108d5dd99f4a20d24d9c348e91c4db7ab1b749200bded2f839ccbe68f"},
+]
+
+[[package]]
 name = "tomli"
 version = "2.0.1"
 description = "A lil' TOML parser"
@@ -3788,4 +3801,4 @@ termcolor = ">=2.2,<3.0"
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.10, <3.12"
-content-hash = "34f76156251b994a2f0cecaed12ac8187a57b60096afadf28cd5b2312d3433ae"
+content-hash = "3f19d699f178cc7e5b53978ab0d0dd7a5a27c6ed99f12413082626b2295be297"

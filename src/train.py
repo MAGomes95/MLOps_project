@@ -3,12 +3,9 @@ import pickle
 from dotenv import load_dotenv
 from typing import Optional, Callable, Literal
 
-
 import pandas as pd
-from comet_ml import (
-    API,
-    Experiment
-)
+from comet_ml import Experiment
+
 from sklearn.pipeline import make_pipeline
 from sklearn.metrics import accuracy_score
 from sklearn.ensemble import RandomForestClassifier
@@ -103,12 +100,16 @@ def train(
         pickle.dump(pipeline, handler)
 
     experiment.log_model(str(model_fn), "models/model.pkl")
-    experiment.register_model(str(model_fn))
+    experiment.register_model(
+        model_name=str(model_fn),
+        status="Production"
+    )
 
 
 
 if __name__ == "__main__":
     from argparse import ArgumentParser
+
 
     parser = ArgumentParser()
     parser.add_argument("--model", type=str, choices=["svm", "rf", "knn"])

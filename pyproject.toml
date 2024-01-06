@@ -18,8 +18,8 @@ fire = "^0.5.0"
 optuna = "^3.4.0"
 pydantic = "^2.4.2"
 comet-ml = "^3.35.1"
-cerebrium = "^1.9.4"
 python-dotenv = "^1.0.0"
+cerebrium = "^1.13.12"
 
 
 [build-system]

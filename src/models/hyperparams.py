@@ -73,7 +73,7 @@ def find_best_hyperparams(
 
             # Split data for training and validation
             X_train, X_val = X.iloc[train_idx], X.iloc[validation_idx]
-            y_train, y_val = y.iloc[train_idx], y.iloc[validation_idx]
+            y_train, y_val = y[train_idx], y[validation_idx]
 
             logger.info(f'{split_number=}')
             logger.info(f'{len(X_train)=}')

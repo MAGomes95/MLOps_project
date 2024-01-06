@@ -44,7 +44,7 @@ def feature_dropper(X: pd.DataFrame, features: List[str]) -> pd.DataFrame:
 def get_preprocessing_pipeline() -> Pipeline:
     """Returns the preprocessing pipeline."""
     pipeline_steps = [
-        ("drop ID", FunctionTransformer(feature_dropper, kw_args={"features": ["Patient Id"]})),
+        ("drop IDs", FunctionTransformer(feature_dropper, kw_args={"features": ["Patient Id", "index"]})),
         ("interaction features", PolynomialFeatures(interaction_only=True, include_bias=False)),
         ("feature selection", SelectKBest(mutual_info_classif, k=5)),
         ("scaling", MinMaxScaler()),
